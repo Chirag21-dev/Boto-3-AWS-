@@ -24,6 +24,12 @@ cur.execute('''
         age INT
     );
 ''')
+cur.execute("INSERT INTO my_table (name, age) VALUES (%s, %s);", ('John Doe', 30))
+cur.execute("SELECT * FROM my_table;")
+data = cur.fetchall()
+for row in data:
+    print(row)
+
 databases = cur.fetchall()
 print(databases)
 
