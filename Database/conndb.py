@@ -15,6 +15,17 @@ conn.autocommit = True
 cur = conn.cursor()
 
 # Execute SQL queries here
+cur.execute('CREATE DATABASE new_database;')
+cur.execute('SELECT datname FROM new_database;')
+cur.execute('''
+    CREATE TABLE my_table (
+        id SERIAL PRIMARY KEY,
+        name VARCHAR(100),
+        age INT
+    );
+''')
+databases = cur.fetchall()
+print(databases)
 
 # Close the cursor and connection
 cur.close()
